@@ -6,8 +6,7 @@ import (
 )
 
 type Item struct {
-	ID        int64  `gorm:"AUTO_INCREMENT"`
-	SKU       string `gorm:"not null;unique" json:"sku"`
+	SKU       string `gorm:"primary_key" json:"sku"`
 	Name      string `gorm:"not null" json:"name"`
 	Quantity  int64  `gorm:"not null" json:"quantity"`
 	CreatedAt int64
