@@ -53,6 +53,13 @@ func (a *App) setRouters() {
 	a.Get("/api/incoming/item/{id}", a.GetIncomingItem)
 	a.Put("/api/incoming/item/update/{id}", a.UpdateIncomingItem)
 	a.Delete("/api/incoming/item/{id}", a.DeleteIncomingItem)
+
+	// Routing API CRUD Outgoing Item
+	a.Get("/api/outgoing/items", a.GetAllOutgoingItem)
+	a.Post("/api/outgoing/item/create", a.CreateOutgoingItem)
+	a.Get("/api/outgoing/item/{id}", a.GetOutgoingItem)
+	a.Put("/api/outgoing/item/update/{id}", a.UpdateOutgoingItem)
+	a.Delete("/api/outgoing/item/{id}", a.DeleteOutgoingItem)
 }
 
 // Wrap the router for GET method
@@ -115,6 +122,27 @@ func (a *App) UpdateIncomingItem(w http.ResponseWriter, r *http.Request) {
 
 func (a *App) DeleteIncomingItem(w http.ResponseWriter, r *http.Request) {
 	handler.DeleteIncomingItem(a.DB, w, r)
+}
+
+// Handlers to manage Outgoing Item Data
+func (a *App) GetAllOutgoingItem(w http.ResponseWriter, r *http.Request) {
+	handler.GetAllOutgoingItem(a.DB, w, r)
+}
+
+func (a *App) CreateOutgoingItem(w http.ResponseWriter, r *http.Request) {
+	handler.CreateOutgoingItem(a.DB, w, r)
+}
+
+func (a *App) GetOutgoingItem(w http.ResponseWriter, r *http.Request) {
+	handler.GetOutgoingItem(a.DB, w, r)
+}
+
+func (a *App) UpdateOutgoingItem(w http.ResponseWriter, r *http.Request) {
+	handler.UpdateOutgoingItem(a.DB, w, r)
+}
+
+func (a *App) DeleteOutgoingItem(w http.ResponseWriter, r *http.Request) {
+	handler.DeleteOutgoingItem(a.DB, w, r)
 }
 
 // Run the app on it's router
