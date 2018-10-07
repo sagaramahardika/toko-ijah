@@ -37,7 +37,7 @@ func GetIncomingItem(db *gorm.DB, w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 
 	id, err := strconv.ParseInt(vars["id"], 10, 64)
-	if err == nil {
+	if err != nil {
 		respondError(w, http.StatusBadRequest, err.Error())
 		return
 	}
@@ -54,7 +54,7 @@ func UpdateIncomingItem(db *gorm.DB, w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 
 	id, err := strconv.ParseInt(vars["id"], 10, 64)
-	if err == nil {
+	if err != nil {
 		respondError(w, http.StatusBadRequest, err.Error())
 		return
 	}
@@ -83,7 +83,7 @@ func DeleteIncomingItem(db *gorm.DB, w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 
 	id, err := strconv.ParseInt(vars["id"], 10, 64)
-	if err == nil {
+	if err != nil {
 		respondError(w, http.StatusBadRequest, err.Error())
 		return
 	}
