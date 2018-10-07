@@ -46,6 +46,13 @@ func (a *App) setRouters() {
 	a.Get("/api/item/{sku}", a.GetItem)
 	a.Put("/api/item/update/{sku}", a.UpdateItem)
 	a.Delete("/api/item/{sku}", a.DeleteItem)
+
+	// Routing API CRUD Incoming Item
+	a.Get("/api/incoming/items", a.GetAllIncomingItem)
+	a.Post("/api/incoming/item/create", a.CreateIncomingItem)
+	a.Get("/api/incoming/item/{id}", a.GetIncomingItem)
+	a.Put("/api/incoming/item/update/{id}", a.UpdateIncomingItem)
+	a.Delete("/api/incoming/item/{id}", a.DeleteIncomingItem)
 }
 
 // Wrap the router for GET method
@@ -87,6 +94,27 @@ func (a *App) UpdateItem(w http.ResponseWriter, r *http.Request) {
 
 func (a *App) DeleteItem(w http.ResponseWriter, r *http.Request) {
 	handler.DeleteItem(a.DB, w, r)
+}
+
+// Handlers to manage Incoming Item Data
+func (a *App) GetAllIncomingItem(w http.ResponseWriter, r *http.Request) {
+	handler.GetAllIncomingItem(a.DB, w, r)
+}
+
+func (a *App) CreateIncomingItem(w http.ResponseWriter, r *http.Request) {
+	handler.CreateIncomingItem(a.DB, w, r)
+}
+
+func (a *App) GetIncomingItem(w http.ResponseWriter, r *http.Request) {
+	handler.GetIncomingItem(a.DB, w, r)
+}
+
+func (a *App) UpdateIncomingItem(w http.ResponseWriter, r *http.Request) {
+	handler.UpdateIncomingItem(a.DB, w, r)
+}
+
+func (a *App) DeleteIncomingItem(w http.ResponseWriter, r *http.Request) {
+	handler.DeleteIncomingItem(a.DB, w, r)
 }
 
 // Run the app on it's router

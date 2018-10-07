@@ -87,7 +87,7 @@ func DeleteItem(db *gorm.DB, w http.ResponseWriter, r *http.Request) {
 	respondJSON(w, http.StatusNoContent, nil)
 }
 
-// getEmployeeOr404 gets a employee instance if exists, or respond the 404 error otherwise
+// getItemOr404 gets a item instance if exists, or respond the 404 error otherwise
 func getItemOr404(db *gorm.DB, sku string, w http.ResponseWriter, r *http.Request) *model.Item {
 	item := model.Item{}
 	if err := db.First(&item, model.Item{SKU: sku}).Error; err != nil {
